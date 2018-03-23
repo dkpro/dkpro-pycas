@@ -23,6 +23,6 @@ class Annotation(AnnotationBase):
     "returns the covered text by this annoation FS"
     def geCoveredText(self):
         if not self.CAS == None:
-            return self.CAS.documentText[self.begin:self.end+1]
+            return self.CAS.documentText[self.begin:self.end]
         else:
             raise ValueError('CAS is not set for the feature structure')
