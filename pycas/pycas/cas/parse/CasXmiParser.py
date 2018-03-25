@@ -17,7 +17,7 @@ class CasXmiParser(object):
     "Sets Xmi as String"    
     def setXmiAsString(self,xmi):
         self.Xmi = xmi
-        self.root = etree.XML(self.Xmi.encode('ascii'))
+        self.root = etree.XML(self.Xmi.encode('utf-8'))
     "Sets Xmi as filepath"    
     def setXmiAsFile(self,filepath):        
         self.Xmi = etree.tostring(etree.parse(filepath).getroot())

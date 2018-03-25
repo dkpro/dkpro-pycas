@@ -21,7 +21,7 @@ class Annotation(AnnotationBase):
         #set type, id and type system
         AnnotationBase.__init__(self,FStype,FSid,typeSystem)
     "returns the covered text by this annoation FS"
-    def geCoveredText(self):
+    def getCoveredText(self):
         if not self.CAS == None:
             return self.CAS.documentText[self.begin:self.end]
         else:
