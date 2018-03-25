@@ -43,6 +43,16 @@ class CasFactory(object):
         casXmiParser = CasXmiParser()
         casXmiParser.setXmiAsString(xmistring)
         return self.__build(cas, casXmiParser)
+    
+    def buildCASfromStrings(self, xmistring, typesysstemString):
+        # create type ystem object
+        typesystem = TypeSystemFactory.readTypeSystemString(self, typesysstemString)
+        # create a CAS object
+        cas = CAS(typesystem)
+        # create cas xmi perser object to fetch elements from xmi file
+        casXmiParser = CasXmiParser()
+        casXmiParser.setXmiAsString(xmistring)
+        return self.__build(cas, casXmiParser)
 
     def __build(self,cas,casXmiParser):
         #get xmi root element as string
