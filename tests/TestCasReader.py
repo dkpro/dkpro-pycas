@@ -17,6 +17,7 @@ from pycas.cas.core.CasFactory import CasFactory
 from pycas.cas.writer.XmiWriter import XmiWriter
 from pycas.type.cas.TypeSystemFactory import TypeSystemFactory
 from pycas.type.cas.TypeDescription import TypeDescription
+
 class TestStringMethods(unittest.TestCase):
     # can't instantiate as abstract classes
     def test_abstract(self):
@@ -30,7 +31,7 @@ class TestStringMethods(unittest.TestCase):
 
     # create a feature
     def test_feature(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         typeFsArray = typesystem.getType('uima.cas.FSArray')
         typeSa = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.anomaly.type.SuggestedAction')
@@ -44,10 +45,11 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(aFeature.description, '')
         self.assertEqual(aFeature.rangeType, typeFsArray)
         self.assertEqual(aFeature.elementType.name, typeSa.name)
+
     # use of setListValue and getListValue
     def test_ListValsetNget(self):
 
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -61,7 +63,7 @@ class TestStringMethods(unittest.TestCase):
 
     # checking of setListValue and getListValue exceptions
     def test_setListVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -91,7 +93,7 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setStringValue and getStringValue
     def test_StringValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -101,9 +103,10 @@ class TestStringMethods(unittest.TestCase):
 
         fsTagDesc1.setStringValue(aFeature, "Hello")
         self.assertEqual(fsTagDesc1.getStringValue(aFeature),'Hello')
+
     # checking of setStringValue and getStringValue exceptions
     def test_setStringVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -126,19 +129,19 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setBoolValue and getBoolValue
     def test_BoolValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
         aFeature = Feature(fsTagDesc1.FStype,'name')
         aFeature.description = ''
         aFeature.elementType = 'uima.cas.Boolean'
-
         fsTagDesc1.setBoolValue(aFeature, False)
         self.assertEqual(fsTagDesc1.getBoolValue(aFeature),False)
+
     # checking of setBoolValue and getBoolValue exceptions
     def test_setBoolVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -161,7 +164,7 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setIntValue and getIntValue
     def test_IntValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -171,9 +174,10 @@ class TestStringMethods(unittest.TestCase):
 
         fsTagDesc1.setIntValue(aFeature, 10)
         self.assertEqual(fsTagDesc1.getIntValue(aFeature),10)
+
     # checking of setIntValue and getIntValue exceptions
     def test_setIntVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -195,7 +199,7 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setLongValue and getLongValue, in python long is also represented using Integer
     def test_LongValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -205,9 +209,10 @@ class TestStringMethods(unittest.TestCase):
 
         fsTagDesc1.setLongValue(aFeature, 100000000)
         self.assertEqual(int(fsTagDesc1.getLongValue(aFeature)),100000000)
+
     # checking of setLongValue and getLongValue exceptions
     def test_setLongVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -229,7 +234,7 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setFloatValue and getFloatValue
     def test_FloatValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -239,9 +244,10 @@ class TestStringMethods(unittest.TestCase):
 
         fsTagDesc1.setFloatValue(aFeature, 10.1)
         self.assertEqual(fsTagDesc1.getFloatValue(aFeature),10.1)
+
     # checking of setFloatValue and getFloatValue exceptions
     def test_setFloatVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -260,9 +266,10 @@ class TestStringMethods(unittest.TestCase):
         with self.assertRaises(TypeError):
             aFeature.elementType = 'uima.cas.String'
             fsTagDesc1.setFloatValue(aFeature, 10.1)
+
     # use of setComplexValue and getComplexValue, python has complex data type but java does not, so complex are converted to string in python
     def test_ComplexValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -275,7 +282,7 @@ class TestStringMethods(unittest.TestCase):
 
     # checking of setComplexValue and getComplexValue exceptions
     def test_setComplexVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -297,7 +304,7 @@ class TestStringMethods(unittest.TestCase):
 
     # use of setFeatureValue and getFeatureValue
     def test_FeatureValsetNget(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         tokenType = 'de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token'
         fsTokenType = typesystem.getType(tokenType)
@@ -315,9 +322,10 @@ class TestStringMethods(unittest.TestCase):
 
         fsToken.setFeatureValue(aFeature, fsPOS)
         self.assertEqual(fsToken.getFeatureValue(aFeature),fsPOS)
+
     # checking of setFeatureValue and getFeatureValue exceptions
     def test_setFeatureVal_Fail(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         fsTagDesc1 = TOP(fstype4,1,typesystem)
@@ -339,7 +347,7 @@ class TestStringMethods(unittest.TestCase):
             fsTagDesc1.setComplexValue(aFeature, 878)
 
     def test_Annotation(self):
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         fstype4 = typesystem.getType('de.tudarmstadt.ukp.dkpro.core.api.metadata.type.TagDescription')
         sentenceType = 'de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Sentence'
@@ -374,8 +382,7 @@ class TestStringMethods(unittest.TestCase):
 
     #test retrieving feature
     def test_getFeature(self):
-
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         posType = 'de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS'
         fsPosType = typesystem.getType(posType)
@@ -413,8 +420,7 @@ class TestStringMethods(unittest.TestCase):
 
     # test creating cas object
     def test_Cas(self):
-
-        typeSystemFilePath = 'typesystem.xml'
+        typeSystemFilePath = 'tests/testing_data/typesystem.xml'
         typesystem = TypeSystemFactory.readTypeSystem(self, typeSystemFilePath)
         cas = CAS(typesystem)
         cas.documentText = 'These steps install the basis system requirements'
@@ -497,25 +503,26 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(cas.documentText,cas.sofaFS.sofaString)
 
         tokens = cas.getAnnotation('de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Token')
-        self.assertEqual(tokens[0].getCoveredText(),"These ")
+        self.assertEqual(tokens[0].getCoveredText(),"These")
 
     #example of parsing the whole CasXmi file to a full object structure and writing back from the object structure
     def test_casbuild(self):
-
-        cas = CasFactory.buildCAS(self,'document3.txt.xmi', 'typesystem.xml')
+        caf = CasFactory()
+        cas = caf.buildCAS('tests/testing_data/document3.txt.xmi', 'tests/testing_data/typesystem.xml')
 
         """
         for e in cas.getAnnotationIndex():
             print(e.FSid,e.FStype)
             print(e.getFeatureValsAsDictList())
         """
+
         xmiwriter = XmiWriter()
         #provide correct path
-        xmiwriter.write(cas, 'document5.txt.xmi')
+        xmiwriter.write(cas, 'tests/testing_data/document5.txt.xmi')
 
     #example of creating type system object
     def test_typeysfact(self):
-        typesystem = TypeSystemFactory.readTypeSystem(self, 'typesystem.xml')
+        typesystem = TypeSystemFactory.readTypeSystem(self, 'tests/testing_data/typesystem.xml')
 
         """
         for tdesc in typesystem.getAllTypeDesc():
