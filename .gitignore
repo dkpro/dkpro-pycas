@@ -2,3 +2,5 @@
 *.pyc
 dist/
 __pycache__/
+.pytest_cache
+.tox
