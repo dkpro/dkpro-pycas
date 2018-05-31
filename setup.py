@@ -1,4 +1,4 @@
-from distutils.core import setup
+from setuptools import setup, find_packages
 
 setup(
     # Application name:
@@ -12,8 +12,7 @@ setup(
     author_email="dibyojyoticemk@gmail.com",
 
     # Packages
-    packages=["dibyojyoti.master.thesis.python.cas.core","dibyojyoti.master.thesis.test","dibyojyoti.master.thesis.python.cas.parse",
-				"dibyojyoti.master.thesis.python.cas.writer","dibyojyoti.master.thesis.python.type.cas"],
+    packages=find_packages(),
 
     # Include additional files into the package
     include_package_data=True,
@@ -24,11 +23,12 @@ setup(
     #
     # license="LICENSE.txt",
     description="CAS API python.",
+    test_suite="tests",
 
     # long_description=open("README.txt").read(),
 
     # Dependent packages (distributions)
-    #install_requires=[
-    #    "lxml",
-    #],
+    install_requires=[
+        "lxml",
+    ]
 )
