@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "90efe8205371f68d6fde4cd341c8c886f4723b728a43cff9df306de6ddb5d91c"
+            "sha256": "1212a0980db3e70b858f6fb20370f0702906fd3f591e3e657eef29c8b03e6e14"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -72,6 +72,13 @@
             "markers": "sys_platform == 'darwin'",
             "version": "==0.1.0"
         },
+        "argparse": {
+            "hashes": [
+                "sha256:c31647edb69fd3d465a847ea3157d37bed1f95f19760b11a47aa91c04b666314",
+                "sha256:62b089a55be1d8949cd2bc7e0df0bddb9e028faefc8c32038cc84862aefdd6e4"
+            ],
+            "version": "==1.4.0"
+        },
         "backcall": {
             "hashes": [
                 "sha256:38ecd85be2c1e78f77fd91700c76e14667dc21e2713b63876c0eb901196e01e4",
@@ -127,6 +134,13 @@
                 "sha256:1972f694c6bc66a2fac8718299e2ab73011d653a6d8059790c3476d2353b99ad"
             ],
             "version": "==0.12.0"
+        },
+        "linecache2": {
+            "hashes": [
+                "sha256:e78be9c0a0dfcbac712fe04fbf92b96cddae80b1b842f24248214c8496f006ef",
+                "sha256:4b26ff4e7110db76eeb6f5a7b64a82623839d595c2038eeda662f2a2db78e97c"
+            ],
+            "version": "==1.0.0"
         },
         "mccabe": {
             "hashes": [
@@ -228,12 +242,26 @@
             ],
             "version": "==3.0.0"
         },
+        "traceback2": {
+            "hashes": [
+                "sha256:8253cebec4b19094d67cc5ed5af99bf1dba1285292226e98a31929f87a5d6b23",
+                "sha256:05acc67a09980c2ecfedd3423f7ae0104839eccb55fc645773e1caa0951c3030"
+            ],
+            "version": "==1.4.0"
+        },
         "traitlets": {
             "hashes": [
                 "sha256:c6cb5e6f57c5a9bdaa40fa71ce7b4af30298fbab9ece9815b5d995ab6217c7d9",
                 "sha256:9c4bd2d267b7153df9152698efb1050a5d84982d3384a37b2c1f7723ba3e7835"
             ],
             "version": "==4.3.2"
+        },
+        "unittest2": {
+            "hashes": [
+                "sha256:13f77d0875db6d9b435e1d4f41e74ad4cc2eb6e1d5c824996092b3430f088bb8",
+                "sha256:22882a0e418c284e1f718a822b3b022944d53d2d908e1690b319a9d3eb2c0579"
+            ],
+            "version": "==1.1.0"
         },
         "virtualenv": {
             "hashes": [

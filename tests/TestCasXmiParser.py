@@ -3,7 +3,7 @@ Created on Dec 12, 2016
 unit test cases to check CasXmiParser functionality
 @author: Dibyojyoti
 '''
-import unittest
+import unittest2 as unittest
 from pycas.cas.parse.CasXmiParser import CasXmiParser
 from lxml import etree
 

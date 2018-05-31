@@ -5,7 +5,7 @@ Created on Dec 14, 2016
 @author: Dibyojyoti
 unit test cases to check TypeSystemParser functionality
 '''
-import unittest
+import unittest2 as unittest
 from pycas.cas.parse.TypeSystemParser import TypeSystemParser
 
 class TestTypeSystemParserMethods(unittest.TestCase):

@@ -4,7 +4,7 @@ Created on Dec 25, 2016
 @author: Dibyojyoti
 unit test cases to check CasXmi functionality
 '''
-import unittest
+import unittest2 as unittest
 
 from pycas.type.cas.CAS_Type import CAS_Type
 from pycas.type.cas.Feature import Feature
