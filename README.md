@@ -1,4 +1,4 @@
-# DKPRo PyCAS
+# DKPro PyCAS
 
 [![Build Status](https://travis-ci.org/dkpro/dkpro-pycas.svg?branch=master)](https://travis-ci.org/dkpro/dkpro-pycas)
 
