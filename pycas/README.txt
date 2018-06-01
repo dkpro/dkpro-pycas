@@ -1,1 +1,0 @@
-This API is a minimal implementation for UIMA CAS handlling similar to the JAVAA API
