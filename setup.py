@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     # Application name:
-    name="dibyojyoti-master-thesis-CASXmi-python",
+    name="DKPro PyCAS",
 
     # Version number (initial):
-    version="0.1.1",
+    version="0.1.1a",
 
     # Application author details:
-    author="dibyojyoti sanyal",
-    author_email="dibyojyoticemk@gmail.com",
+    author="DKPro PyCAS Team",
+    author_email="dkpro-core-user@googlegroups.com",
 
     # Packages
     packages=find_packages(),
@@ -18,14 +18,22 @@ setup(
     include_package_data=True,
 
     # Details
-    url="https://git.ukp.informatik.tu-darmstadt.de/dibyojyoti/UIMAAS_Thesis_Dibyo/tree/master/python",
+    url="https://github.com/dkpro/dkpro-pycas",
 
     #
-    # license="LICENSE.txt",
-    description="CAS API python.",
+    license='Apache License 2.0',
+    description="UIMA CAS XMI API for Python.",
     test_suite="tests",
 
     # long_description=open("README.txt").read(),
+
+    classifiers=[
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Developers',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Topic :: Software Development :: Libraries'
+    ],
 
     # Dependent packages (distributions)
     install_requires=[
