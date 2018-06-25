@@ -14,7 +14,8 @@
 
 # Please keep the list sorted.
 
-Dibyojyoti Sanyal [Dibyojyoti] 
+Dibyojyoti Sanyal [Dibyojyoti]
+Jan-Christoph Klie [rentier]
 Matteo Romanello [mromanello]
 Maximilian Fuchs [Maximilian-Fuchs]
 Richard Eckart de Castilho <richard.eckart@gmail.com> [reckart]

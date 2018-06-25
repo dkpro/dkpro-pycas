@@ -24,7 +24,7 @@ class TypeSystemParser(object):
     """
     "Sets typesystem as string"        
     def setTypeAsString(self,typeString):
-        self.typeStringRoot = etree.XML(typeString)
+        self.typeStringRoot = etree.XML(typeString.encode('utf-8'))
     "Sets typesystem as filepath"    
     def setTypeAsFile(self,filepath):        
         self.typeStringRoot = etree.XML(etree.tostring(etree.parse(filepath).getroot()))

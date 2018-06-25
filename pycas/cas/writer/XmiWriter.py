@@ -5,6 +5,9 @@ Created on Jan 23, 2017
 '''
 import os
 import sys
+
+from xml.sax.saxutils import quoteattr
+
 from pycas.cas.core.FeatureStructure import FeatureStructure
 from pycas.type.cas.TypeDescription import TypeDescription
 
@@ -90,9 +93,9 @@ class XmiWriter(object):
 
         #add name spaces
         for nselem in self.__xmlnsDictList:
-            xmistr =xmistr+' xmlns:'+nselem['tagQualifier']+'="'+nselem['domainurl']+'"'
+            xmistr =xmistr+' xmlns:'+nselem['tagQualifier']+'='+escape(nselem['domainurl'])
         #close root tag with version
-        xmistr = xmistr+' xmi:version="'+self.__version+'">'
+        xmistr = xmistr+' xmi:version='+escape(self.__version)+'>'
 
         #add casnull
         xmistr = xmistr+'<cas:NULL xmi:id="0"/>'
@@ -106,7 +109,7 @@ class XmiWriter(object):
                 domlist=element.FStype.name.split('.')
                 tagName=domlist[len(domlist)-1]
                 tagQualifier=self.__getTagQualifier(element.FStype.name)
-                casnull='<'+tagQualifier+':'+tagName+' xmi:id="'+str(element.FSid)+'"/>'
+                casnull='<'+tagQualifier+':'+tagName+' xmi:id='+escape(element.FSid)+'/>'
                 #add the id to the indexedFsIdArray to record that this FS is already processed
                 indexedFsIdArray.append(element.FSid)
                 xmistr = xmistr+casnull
@@ -116,7 +119,7 @@ class XmiWriter(object):
                 domlist=element.FStype.name.split('.')
                 tagName=domlist[len(domlist)-1]
                 tagQualifier=self.__getTagQualifier(element.FStype.name)
-                cassofa='<'+tagQualifier+':'+tagName+' xmi:id="'+str(element.FSid)+'" sofaNum="'+str(element.sofaNum)+'" sofaID="'+ str(element.sofaID)+'" mimeType="'+ str(element.mimeType)+ '" sofaString="'+str(element.sofaString)+'"/>'
+                cassofa='<'+tagQualifier+':'+tagName+' xmi:id='+escape(element.FSid)+' sofaNum='+escape(element.sofaNum)+' sofaID='+ escape(element.sofaID)+' mimeType='+ escape(element.mimeType)+ ' sofaString='+escape(element.sofaString)+'/>'
                 #add the id to the indexedFsIdArray to record that this FS is already processed
                 indexedFsIdArray.append(int(element.FSid))
                 xmistr = xmistr+cassofa
@@ -126,7 +129,7 @@ class XmiWriter(object):
                 domlist=element.FStype.name.split('.')
                 tagName=domlist[len(domlist)-1]
                 tagQualifier=self.__getTagQualifier(element.FStype.name)
-                casfs='<'+tagQualifier+':'+tagName+' xmi:id="'+str(element.FSid)+'"'
+                casfs='<'+tagQualifier+':'+tagName+' xmi:id='+escape(element.FSid)+''
                 #add the id to the indexedFsIdArray to record that this FS is already processed
                 indexedFsIdArray.append(element.FSid)
                 fspoprs=''
@@ -139,23 +142,23 @@ class XmiWriter(object):
                         for fname,fval in fdict.items():
                             #get the sofa feature
                             if(fname =='sofa'):
-                                sofa = ' sofa="' +str(fval.FSid)+'"'
+                                sofa = ' sofa=' +escape(fval.FSid)+''
                             #get the begin
                             elif(fname == 'begin'):
-                                begin = ' begin="' +str(fval)+'"'
+                                begin = ' begin=' +escape(fval)+''
                             #get the end
                             elif(fname == 'end'):
-                                end = ' end="' +str(fval)+'"'
+                                end = ' end=' +escape(fval)+''
                             #for all other features
                             else:
                                 #if feature value is not a list
                                 if not type(fval) is list:
                                     #if its FS take FSid and add the FS to the fsNotInIndexListCheck
                                     if (isinstance(fval,TypeDescription) and isinstance(fval,FeatureStructure)):
-                                        fspoprs=fspoprs+' '+fname+'="'+str(fval.FSid)+'"'
+                                        fspoprs=fspoprs+' '+fname+'='+escape(fval.FSid)
                                         fsNotInIndexListCheck.append(fval)
                                     else:
-                                        fspoprs=fspoprs+' '+fname+'="'+str(fval)+'"'
+                                        fspoprs=fspoprs+' '+fname+'='+escape(fval)
                                 #if feature value is a list
                                 elif type(fval) is list:
                                     listval=''
@@ -167,7 +170,7 @@ class XmiWriter(object):
                                             fsNotInIndexListCheck.append(valelement)
                                         else:
                                             listval = str(valelement) if (listval == '') else listval+' '+str(valelement)
-                                    fspoprs=fspoprs+' '+fname+'="'+listval+'"'
+                                    fspoprs=fspoprs+' '+fname+'='+ escape(listval)+''
                                 else:
                                     raise TypeError('type of feature',fname,'not recognized')
 
@@ -183,8 +186,9 @@ class XmiWriter(object):
             if( not fs.FSid in indexedFsIdArray):
                 domlist=fs.FStype.name.split('.')
                 tagName=domlist[len(domlist)-1]
-                tagQualifier=self.__getTagQualifier(element.FStype.name)
-                casfs='<'+tagQualifier+':'+tagName+' xmi:id="'+str(fs.FSid)+'"'
+                tagQualifier=self.__getTagQualifier(fs.FStype.name)
+                casfs='<'+tagQualifier+':'+tagName+' xmi:id='+escape(fs.FSid)+''
+
                 fspoprs=''
                 sofa=''
                 begin=''
@@ -194,29 +198,29 @@ class XmiWriter(object):
                     for fdict in fs.getFeatureValsAsDictList():
                         for fname,fval in fdict.items():
                             if(fname =='sofa'):
-                                sofa = ' sofa="' +str(fval.FSid)+'"'
+                                sofa = ' sofa=' +escape(fval.FSid)+''
                             #get the begin
                             elif(fname == 'begin'):
-                                begin = ' begin="' +str(fval)+'"'
+                                begin = ' begin=' +escape(fval)+''
                             #get the end
                             elif(fname == 'end'):
-                                end = ' end="' +str(fval)+'"'
+                                end = ' end=' +escape(fval)+''
                             else:
                                 if not type(fval) is list:
                                     #if its FS take FSid
                                     if (isinstance(fval,TypeDescription) and isinstance(fval,FeatureStructure)):
-                                        fspoprs=fspoprs+' '+fname+'="'+str(fval.FSid)+'"'
+                                        fspoprs=fspoprs+' '+fname+'='+escape(fval.FSid)+''
                                     else:
-                                        fspoprs=fspoprs+' '+fname+'="'+str(fval)+'"'
+                                        fspoprs=fspoprs+' '+fname+'='+escape(fval)+''
                                 elif type(fval) is list:
                                     listval=''
                                     for valelement in fval:
                                         #if its FS
                                         if (isinstance(valelement,TypeDescription) and isinstance(valelement,FeatureStructure)):
-                                            listval = str(valelement.FSid) if (listval == '') else listval+' '+str(valelement.FSid)
+                                            listval = escape(valelement.FSid) if (listval == '') else listval+' '+escape(valelement.FSid)
                                         else:
-                                            listval = str(valelement) if (listval == '') else listval+' '+str(valelement)
-                                    fspoprs=fspoprs+' '+fname+'="'+listval+'"'
+                                            listval = escape(valelement) if (listval == '') else listval+' '+escape(valelement)
+                                    fspoprs=fspoprs+' '+fname+'='+listval+''
                                 else:
                                     raise TypeError('type of feature',fname,'not recognized')
 
@@ -228,14 +232,10 @@ class XmiWriter(object):
                 xmistr = xmistr + casfs
 
         #add cas:View element
-        casview = '<cas:View'+' Sofa="'+cas.sofaFS.FSid+'"'
-        memlist=''
-        for element in cas.getSofaCasView():
-            if memlist == '':
-                memlist = str(element.FSid)
-            else:
-                memlist = memlist +" "+str(element.FSid)
-        casview = casview + ' members="'+memlist+'"/>'
+        casview = '<cas:View'+' sofa='+ escape(cas.sofaFS.FSid)
+        memlist = ' '.join(sorted([str(element.FSid) for element in cas.getSofaCasView() if element.FSid != cas.sofaFS.FSid], key=int ))
+
+        casview = casview + ' members='+ escape(memlist)+'/>'
 
         xmistr = xmistr + casview
 
@@ -250,3 +250,6 @@ class XmiWriter(object):
             if nselem['namespace'] == domain:
                 tagQualifier = nselem['tagQualifier']
         return tagQualifier
+
+def escape(s):
+    return quoteattr(str(s))
