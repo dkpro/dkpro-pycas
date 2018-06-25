@@ -18,7 +18,7 @@
     xmlns:type7="http:///de/tudarmstadt/ukp/dkpro/core/api/semantics/type.ecore" 
     xmlns:morph="http:///de/tudarmstadt/ukp/dkpro/core/api/lexmorph/type/morph.ecore" xmi:version="2.0">
     <cas:NULL xmi:id="0"/>
-    <cas:Sofa xmi:id="878" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="These steps install the basis system requirements needed to implement DKPro Core pipelines using the Java language. They need to be performed only once."/>
+    <cas:Sofa xmi:id="878" sofaNum="1" sofaID="_InitialView" mimeType="text" sofaString="These &lt;teps 'nstall the b&amp;sis sy&quot;tem req&quot;irements &apos;eeded to implement DKPro Core pipelines using the Java language. They need to be performed only once."/>
     <type4:DocumentMetaData xmi:id="91" sofa="878" begin="0" end="152" language="en" documentBaseUri="file:/C:/Users/Dibyojyoti/Desktop/scriptip/" documentUri="file:/C:/Users/Dibyojyoti/Desktop/scriptip/document1.txt" documentId="document1.txt" documentTitle="document1.txt" isLastSegment="false" collectionId="file:/C:/Users/Dibyojyoti/Desktop/scriptip/"/>
     <type6:Sentence xmi:id="102" sofa="878" begin="0" end="115"/>
     <type6:Sentence xmi:id="107" sofa="878" begin="116" end="152"/>
