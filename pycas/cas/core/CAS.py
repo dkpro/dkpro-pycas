@@ -22,8 +22,8 @@ class CAS(object):
         #counter to add id to each feature structure created in the class, if user supplied id given it will be accepted if available
         #if not supplied a unique id will be given
         self.__idCounter = 0
-        #list to hold the numeric values that has been used as ids 
-        self.__idArray = []
+        #set to hold the numeric values that has been used as ids 
+        self.__ids = set()
         #create sofa FS
         self.__sofaFS = self.createSofaFS('uima.cas.Sofa',{'sofaNum': 1, 'sofaID': '_InitialView','mimeType': 'text'})
         self.__DocumentFS=None
@@ -66,15 +66,15 @@ class CAS(object):
         #if Fsid attribute is not provided or 'id' is not supplied in feature dict
         if(fsid == -1 and dictid==None):
             while True:
-                self.__idCounter= self.__idCounter+1
-                if not (self.__idCounter in self.__idArray):
+                self.__idCounter = self.__idCounter + 1
+                if not (self.__idCounter in self.__ids):
                     break
         #if Fsid attribute is provided and 'id' is supplied in feature dict    
         elif(not fsid == -1 and not dictid==None):
             raise ValueError('FSid and id in feature dict, both not allowed')
         #if Fsid attribute is provided but 'id' is not supplied in feature dict
         elif(not fsid == -1 and dictid==None):
-            if(fsid in self.__idArray ):
+            if(fsid in self.__ids ):
                 raise ValueError(fsid,'as FSid is already occupied')
             else:
                 self.__idCounter = fsid
@@ -84,11 +84,11 @@ class CAS(object):
                 raise ValueError('id should ve non negative integer')
             elif(dictid<0):
                 raise ValueError('id should ve non negative integer')
-            elif(dictid in self.__idArray):
+            elif(dictid in self.__ids):
                 raise ValueError(dictid,'as FSid is already occupied')
             else:
                 self.__idCounter = dictid
-        self.__idArray.append(self.__idCounter)        
+        self.__ids.add(self.__idCounter)        
         return self.__idCounter
     "creates and returns document annotation or FS"
     def createDocumentAnnotation(self,typeName,length,featureDict,FSid=-1):
@@ -190,7 +190,7 @@ class CAS(object):
                 self.freeId(fs.FSid)
     "frees an id"
     def freeId(self,num):
-        self.__idArray.remove(num)    
+        self.__ids.remove(num)    
     "Returns sofaFS"
     @property
     def sofaFS(self):

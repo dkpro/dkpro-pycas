@@ -17,28 +17,23 @@ class TypeSystem(object):
         #name space property to represent the name space of the type system XML 
         self.namespace='' 
         #list of types(type descriptions)
-        self.__typeDesc = []
+        self.__typeDesc = {}
     '''
     This method takes a tape description object and adds to the type description list
     '''    
     def addTypeDesc(self,typeDesc):
-        self.__typeDesc.append(typeDesc)
+        self.__typeDesc[typeDesc.name] = typeDesc
     '''
     This methods returns the list of types(type descriptions)
     '''    
     def getAllTypeDesc(self):
-        return self.__typeDesc
+        return list(self.__typeDesc.values())
     '''
     This methods returns the type object which matches its name with the supplied type name as string, 
     if no matching type found returns None  
     '''
     def getType(self,name):
-        typeDesc=None
-        for td in self.__typeDesc:
-            if td.name == name:
-                typeDesc= td
-                break
-        return typeDesc
+        return self.__typeDesc.get(name, None)
     '''
     This method returns the feature object for a given type name and feature name as supplied string
     if no feature found return None
