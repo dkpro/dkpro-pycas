@@ -1,3 +1,7 @@
+**NOTE**: This project is superseded by [DKPro Cassis](https://github.com/dkpro/dkpro-cassis). 
+
+-------
+
 # DKPro PyCAS
 
 [![Build Status](https://travis-ci.org/dkpro/dkpro-pycas.svg?branch=master)](https://travis-ci.org/dkpro/dkpro-pycas)
