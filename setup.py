@@ -5,7 +5,7 @@ setup(
     name="DKPro PyCAS",
 
     # Version number (initial):
-    version="0.1.1a",
+    version="0.1.1b",
 
     # Application author details:
     author="DKPro PyCAS Team",
